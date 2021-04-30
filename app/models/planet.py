@@ -1,0 +1,17 @@
+from app import db
+
+
+class Planet(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String)
+    description = db.Column(db.String)
+    diameter = db.Column(db.Integer)
+
+    def to_json(self):
+        return {
+            "id": self.id,
+            "title": self.name,
+            "description": self.description,
+            "diameter": self.diameter
+        }
+    
