@@ -15,10 +15,10 @@ def add_planet():
     db.session.add(new_planet)
     db.session.commit()
 
-    return {
+    return jsonify({
         "success": True,
         "message": f"Planet {new_planet.name} has been created"
-    }, 201
+    }), 201
 
 
 @planet_bp.route("", methods=["GET"], strict_slashes=False)
@@ -37,10 +37,44 @@ def get_planet(planet_id):
     if planet:
         return planet.to_json(), 200
 
-    return {
+    return jsonify({
         "message": f"Planet with id {planet_id} was not found",
         "success" : False
-    }, 404
+    }), 404
+
+@planet_bp.route("/<planet_id>", methods=["PUT"], strict_slashes=False)
+def update_planet(planet_id):
+    planet = Planet.query.get(planet_id)
+    if planet:
+        form_data = request.get_json()
+        planet.name = form_data["name"]
+        planet.description = form_data["description"]
+        planet.diameter = form_data["diameter"]
+        db.session.commit()
+        return jsonify({
+                "success": True,
+                "message": f"Planet #{planet.id} successfully updated"
+            }, 200)
+    return jsonify({
+        "message": f"Planet with id {planet_id} was not found",
+        "success" : False
+    }), 404
+
+@planet_bp.route("/<planet_id>", methods=["DELETE"], strict_slashes=False)
+def delete_planet(planet_id):
+    planet = Planet.query.get(planet_id)
+    if planet:
+        db.session.delete(planet)
+        db.session.commit()
+        return jsonify({
+            "success": True,
+            "message": f"Planet #{planet.id} successfully deleted"
+        }), 200
+    return jsonify({
+        "message": f"Planet with id {planet_id} was not found",
+        "success" : False
+    }), 404
+        
 
 
 
