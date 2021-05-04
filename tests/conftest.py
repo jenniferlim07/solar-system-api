@@ -29,7 +29,4 @@ def two_saved_planets(app):
                     diameter = 86881)
 
     db.session.add_all([water_planet, gas_planet])
-    # Alternatively, we could do
-    # db.session.add(ocean_book)
-    # db.session.add(mountain_book)
     db.session.commit()
