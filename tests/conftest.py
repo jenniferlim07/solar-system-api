@@ -21,15 +21,12 @@ def client(app):
 @pytest.fixture
 def two_saved_planets(app):
     # Arrange
-    water_planet = Planet(title = "Earth",
+    water_planet = Planet(name = "Earth",
                     description= "Homebase",
                     diameter = 7917)
-    gas_planet = Planet(title = "Jupiter",
+    gas_planet = Planet(name = "Jupiter",
                     description="Chonkey-boi",
                     diameter = 86881)
 
     db.session.add_all([water_planet, gas_planet])
-    # Alternatively, we could do
-    # db.session.add(ocean_book)
-    # db.session.add(mountain_book)
     db.session.commit()
