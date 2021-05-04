@@ -30,3 +30,11 @@ def two_saved_planets(app):
 
     db.session.add_all([water_planet, gas_planet])
     db.session.commit()
+
+@pytest.fixture
+def planet_data(app):
+   return {
+    "name": "Earth",
+    "description": "Homebase",
+    "diameter" : 7917
+    }
