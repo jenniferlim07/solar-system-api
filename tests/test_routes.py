@@ -43,18 +43,18 @@ def test_get_all_planets(client, two_saved_planets):
         "description": "Homebase",
         "diameter": 7917
         },
-       { "id": 2,
+        { "id": 2,
         "name": "Jupiter",
         "description": "Chonkey-boi",
         "diameter": 86881
-       }
+        }
     ]
 
 def test_create_one_planet(client, planet_data):
-   response = client.post("/planet",
+    response = client.post("/planet",
     json=planet_data)
-   response_body = response.get_json()
+    response_body = response.get_json()
 
-   assert response.status_code == 201
-   assert response_body == {"success": True,
+    assert response.status_code == 201
+    assert response_body == {"success": True,
         "message": f"Planet Earth has been created"}
