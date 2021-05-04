@@ -21,10 +21,10 @@ def client(app):
 @pytest.fixture
 def two_saved_planets(app):
     # Arrange
-    water_planet = Planet(title = "Earth",
+    water_planet = Planet(name = "Earth",
                     description= "Homebase",
                     diameter = 7917)
-    gas_planet = Planet(title = "Jupiter",
+    gas_planet = Planet(name = "Jupiter",
                     description="Chonkey-boi",
                     diameter = 86881)
 

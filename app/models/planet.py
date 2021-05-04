@@ -10,7 +10,7 @@ class Planet(db.Model):
     def to_json(self):
         return {
             "id": self.id,
-            "title": self.name,
+            "name": self.name,
             "description": self.description,
             "diameter": self.diameter
         }
