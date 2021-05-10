@@ -25,6 +25,7 @@ def test_get_one_planet(client, two_saved_planets):
 def test_get_one_non_existing_planet(client):
     #Act
     response = client.get("/planet/1")
+    response_body = response.get_json()
 
     #Assert
     assert response.status_code == 404

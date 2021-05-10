@@ -54,7 +54,7 @@ def update_planet(planet_id):
         return jsonify({
                 "success": True,
                 "message": f"Planet #{planet.id} successfully updated"
-            }, 200)
+            }), 200
     return jsonify({
         "message": f"Planet with id {planet_id} was not found",
         "success" : False
