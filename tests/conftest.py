@@ -33,8 +33,8 @@ def two_saved_planets(app):
 
 @pytest.fixture
 def planet_data(app):
-   return {
-    "name": "Earth",
-    "description": "Homebase",
-    "diameter" : 7917
+    return {
+        "name": "Earth",
+        "description": "Homebase",
+        "diameter" : 7917
     }
